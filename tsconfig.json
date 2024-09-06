@@ -43,5 +43,10 @@
         "libs/event/src/*"
       ]
     }
-  }
+  },
+  "include": [
+    "apps/**/*.ts",
+    "libs/**/*.ts",
+    ".eslintrc.js"
+  ]
 }
