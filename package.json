@@ -77,7 +77,8 @@
     "moduleNameMapper": {
       "^@app/providers(|/.*)$": "<rootDir>/libs/providers/src/$1",
       "^@app/persistence(|/.*)$": "<rootDir>/libs/persistence/src/$1",
-      "^@app/env(|/.*)$": "<rootDir>/libs/env/src/$1"
+      "^@app/env(|/.*)$": "<rootDir>/libs/env/src/$1",
+      "^@app/event(|/.*)$": "<rootDir>/libs/event/src/$1"
     }
   }
 }

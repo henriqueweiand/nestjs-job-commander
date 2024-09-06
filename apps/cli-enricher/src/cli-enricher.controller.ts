@@ -6,7 +6,7 @@ export class CliEnricherController {
   constructor(private readonly cliEnricherService: CliEnricherService) { }
 
   @Get()
-  run(): string {
-    return this.cliEnricherService.run();
+  async run() {
+    return await this.cliEnricherService.run();
   }
 }

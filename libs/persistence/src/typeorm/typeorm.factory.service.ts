@@ -25,14 +25,6 @@ export class TypeOrmFactory implements PersistenceFactory<TypeOrmModuleOptions> 
   }
 
   private _getEnvs(dbName: string) {
-    console.log({
-      host: this.configService.getOrThrow(`${dbName}.HOST`),
-      port: parseInt(this.configService.getOrThrow(`${dbName}.PORT`), 10),
-      username: this.configService.getOrThrow(`${dbName}.USERNAME`),
-      password: this.configService.getOrThrow(`${dbName}.PASSWORD`),
-      schema: this.configService.getOrThrow(`${dbName}.SCHEMA`),
-      logging: !!this.configService.getOrThrow(`${dbName}.LOGGING`),
-    })
     return {
       host: this.configService.getOrThrow(`${dbName}.HOST`),
       port: parseInt(this.configService.getOrThrow(`${dbName}.PORT`), 10),

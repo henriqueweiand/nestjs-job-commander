@@ -14,7 +14,6 @@ export class PersistenceModule {
       imports: [
         ...databases.map(name =>
           NestTypeOrmModule.forRootAsync({
-            name,
             imports: [TypeOrmModule],
             inject: [TypeOrmFactory],
             useFactory: async (typeOrmFactory: TypeOrmFactory) => {

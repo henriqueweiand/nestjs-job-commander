@@ -35,6 +35,12 @@
       ],
       "@app/env/*": [
         "libs/env/src/*"
+      ],
+      "@app/event": [
+        "libs/event/src"
+      ],
+      "@app/event/*": [
+        "libs/event/src/*"
       ]
     }
   }

@@ -6,6 +6,7 @@ import { ProvidersModule, TicketmasterModule } from '@app/providers';
 
 import { CliEnricherController } from './cli-enricher.controller';
 import { CliEnricherService } from './cli-enricher.service';
+import { EventModule } from '@app/event';
 
 const app = 'CLI-ENRICHER';
 
@@ -14,6 +15,7 @@ const app = 'CLI-ENRICHER';
     EnvModule.register(app),
     PersistenceModule.registerTypeOrm(app),
     ProvidersModule.with(TicketmasterModule),
+    EventModule
   ],
   controllers: [CliEnricherController],
   providers: [CliEnricherService],
