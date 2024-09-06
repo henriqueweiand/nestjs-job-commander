@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/cli-enricher/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/cli-enricher/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/cli-enricher",
+  "projects": {
+    "cli-enricher": {
+      "type": "application",
+      "root": "apps/cli-enricher",
+      "entryFile": "main",
+      "sourceRoot": "apps/cli-enricher/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/cli-enricher/tsconfig.app.json"
+      }
+    },
+    "providers": {
+      "type": "library",
+      "root": "libs/providers",
+      "entryFile": "index",
+      "sourceRoot": "libs/providers/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/providers/tsconfig.lib.json"
+      }
+    },
+    "persistence": {
+      "type": "library",
+      "root": "libs/persistence",
+      "entryFile": "index",
+      "sourceRoot": "libs/persistence/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/persistence/tsconfig.lib.json"
+      }
+    }
+  }
+}
