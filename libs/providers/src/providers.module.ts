@@ -1,8 +1,15 @@
-import { Module } from '@nestjs/common';
-import { ProvidersService } from './providers.service';
+import { DynamicModule, Module, Type } from '@nestjs/common';
 
 @Module({
-  providers: [ProvidersService],
-  exports: [ProvidersService],
+  providers: [],
+  exports: [],
 })
-export class ProvidersModule {}
+export class ProvidersModule {
+  static with(provider: Type | DynamicModule): DynamicModule {
+    return {
+      module: ProvidersModule,
+      imports: [provider],
+      exports: [provider],
+    };
+  }
+}

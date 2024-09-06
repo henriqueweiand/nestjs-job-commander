@@ -18,10 +18,10 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "providers": [
+      "@app/providers": [
         "libs/providers/src"
       ],
-      "providers/*": [
+      "@app/providers/*": [
         "libs/providers/src/*"
       ],
       "@app/persistence": [
@@ -29,6 +29,12 @@
       ],
       "@app/persistence/*": [
         "libs/persistence/src/*"
+      ],
+      "@app/env": [
+        "libs/env/src"
+      ],
+      "@app/env/*": [
+        "libs/env/src/*"
       ]
     }
   }
