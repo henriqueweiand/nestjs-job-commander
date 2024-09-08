@@ -1,0 +1,36 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ticketmaster-event-refresh
+spec:
+  schedule: '*/1 * * * *'
+  # startingDeadlineSeconds: 600
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: ticketmaster-event-refresh-job
+              image: ticketmaster-event-refresh-job
+              imagePullPolicy: Never # Remove it if you have the image in a registry
+              command:
+                - node
+                - dist/apps/cli-enricher/main.js
+                - cli
+                - ticketmaster-event-refresh
+              resources:
+                requests:
+                  memory: '64Mi'
+                  cpu: '250m'
+                limits:
+                  memory: '128Mi'
+                  cpu: '500m'
+              env:
+                - name: NODE_ENV
+                  value: 'production'
+                - name: TICKETMASTER_API_TOKEN
+                  value: ''
+                - name: TICKETMASTER_BASE_URL
+                  value: ''
+          restartPolicy: Never

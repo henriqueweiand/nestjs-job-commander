@@ -1,12 +1,12 @@
 import { Command, CommandRunner } from 'nest-commander';
+import { TicketMasterEventRefreshCommand } from './ticketmaster-event-refresh/ticketmaster_event_refresh.command';
 
-import { SubCommandTest } from './sub-command-test/sub_command_test';
 
 @Command({
     name: 'cli',
     description: 'run a command',
     arguments: '<sub-command>',
-    subCommands: [SubCommandTest],
+    subCommands: [TicketMasterEventRefreshCommand],
 })
 export class CliCommand extends CommandRunner {
     constructor() {
