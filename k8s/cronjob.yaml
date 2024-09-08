@@ -6,6 +6,8 @@ spec:
   schedule: '*/1 * * * *'
   # startingDeadlineSeconds: 600
   concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
   jobTemplate:
     spec:
       template:

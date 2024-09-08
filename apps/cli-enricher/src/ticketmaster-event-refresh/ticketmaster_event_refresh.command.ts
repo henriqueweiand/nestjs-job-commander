@@ -1,6 +1,5 @@
 import { CommandRunner, SubCommand } from 'nest-commander';
 
-import { EventService } from '@app/event';
 import { Providers } from '@app/providers/providers.interface';
 
 interface BasicCommandOptions {
@@ -13,7 +12,7 @@ interface BasicCommandOptions {
 export class TicketMasterEventRefreshCommand extends CommandRunner {
     constructor(
         private readonly ticketmasterProvider: Providers,
-        private readonly eventService: EventService
+        // private readonly eventService: EventService
     ) {
         super()
     }
@@ -32,10 +31,10 @@ export class TicketMasterEventRefreshCommand extends CommandRunner {
         options?: BasicCommandOptions,
     ): Promise<void> {
         const data = await this.ticketmasterProvider.getData();
-        const event = await this.eventService.create();
+        // const event = await this.eventService.create();
 
         console.info(data);
-        console.info(event);
+        // console.info(event);
 
         console.log('sub command', passedParam, options);
     }

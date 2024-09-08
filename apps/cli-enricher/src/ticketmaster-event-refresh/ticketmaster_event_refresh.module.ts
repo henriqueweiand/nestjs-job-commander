@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 
-import { EventModule } from '@app/event';
 import { ProvidersModule, TicketmasterModule } from '@app/providers';
 
 import { TicketMasterEventRefreshCommand } from './ticketmaster_event_refresh.command';
@@ -8,7 +7,7 @@ import { TicketMasterEventRefreshCommand } from './ticketmaster_event_refresh.co
 @Module({
     imports: [
         ProvidersModule.with(TicketmasterModule),
-        EventModule
+        // EventModule
     ],
     providers: [TicketMasterEventRefreshCommand],
 })
