@@ -28,11 +28,7 @@ spec:
                 limits:
                   memory: '128Mi'
                   cpu: '500m'
-              env:
-                - name: NODE_ENV
-                  value: 'production'
-                - name: TICKETMASTER_API_TOKEN
-                  value: ''
-                - name: TICKETMASTER_BASE_URL
-                  value: ''
+              envFrom:
+                - configMapRef:
+                    name: env-config
           restartPolicy: Never

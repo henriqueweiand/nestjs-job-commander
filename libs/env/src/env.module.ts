@@ -12,7 +12,7 @@ export class EnvModule {
       module: EnvModule,
       imports: [
         ConfigModule.forRoot({
-          envFilePath,
+          envFilePath: process.env.NODE_ENV === 'production' ? undefined : envFilePath,
         }),
       ],
       providers: [ConfigService],

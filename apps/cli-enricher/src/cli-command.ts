@@ -1,6 +1,6 @@
 import { Command, CommandRunner } from 'nest-commander';
-import { TicketMasterEventRefreshCommand } from './ticketmaster-event-refresh/ticketmaster_event_refresh.command';
 
+import { TicketMasterEventRefreshCommand } from './ticketmaster-event-refresh/ticketmaster_event_refresh.command';
 
 @Command({
     name: 'cli',
