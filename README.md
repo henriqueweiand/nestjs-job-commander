@@ -29,3 +29,11 @@ NODE_ENV=production
 ```
 
 4. Inside k8s folder, run `kubectl apply -f cronjob.yaml`
+
+### Application overview
+
+![Preview](https://github.com/henriqueweiand/nestjs-job-commander/blob/master/assets/overview.png)
+
+### Possible updates
+
+- K8S get both project and root envs;
