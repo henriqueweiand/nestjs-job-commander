@@ -1,19 +1,20 @@
-import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
 import { Providers } from '@app/providers/providers.interface';
+import { Module } from '@nestjs/common';
 
-import { TicketmasterConfig } from './ticketmaster.config';
 import { TicketmasterProvider } from './ticketmaster.provider';
+import { TicketmasterHttpModule } from './ticketmaster/ticketmaster_http.module';
+import { TicketmasterTransformer } from './ticketmaster.transformer';
 
 @Module({
   imports: [
-    ConfigModule.forFeature(TicketmasterConfig),
+    TicketmasterHttpModule
   ],
   providers: [
     {
       provide: Providers,
       useClass: TicketmasterProvider,
     },
+    TicketmasterTransformer
   ],
   exports: [Providers],
 })

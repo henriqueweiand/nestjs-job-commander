@@ -1,7 +1,7 @@
 import { CommandRunner, SubCommand } from 'nest-commander';
 
+import { EventRepository } from '@app/event/event.repository';
 import { Providers } from '@app/providers/providers.interface';
-import { EventService } from '@app/event';
 
 interface BasicCommandOptions {
     string?: string;
@@ -13,7 +13,7 @@ interface BasicCommandOptions {
 export class TicketMasterEventRefreshCommand extends CommandRunner {
     constructor(
         private readonly ticketmasterProvider: Providers,
-        private readonly eventService: EventService
+        private readonly eventRepository: EventRepository
     ) {
         super()
     }
@@ -31,14 +31,24 @@ export class TicketMasterEventRefreshCommand extends CommandRunner {
         passedParam: string[],
         options?: BasicCommandOptions,
     ): Promise<void> {
-        try {
-            const data = await this.ticketmasterProvider.getData();
-            const event = await this.eventService.create();
+        const data = await this.ticketmasterProvider.getEvents();
 
-            console.info(data);
-            console.info(event);
+        try {
+            for (const event of data) {
+                const registredEvent = await this.eventRepository.findOneBy({ externalId: event.externalId });
+
+                if (registredEvent) {
+                    await this.eventRepository.update(event, registredEvent);
+                    console.info(`Event updated: ${event.name}`);
+                } else {
+                    const newEvent = this.eventRepository.create(event);
+                    await this.eventRepository.save(newEvent);
+
+                    console.info(`Event created: ${event.name}`);
+                }
+            }
         } catch (error) {
-            console.error(error);
+            console.error('Error while refreshing events', error);
         }
 
         console.log('sub command', passedParam, options);

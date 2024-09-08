@@ -1,19 +1,22 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { ConfigType } from '@nestjs/config';
+import { Injectable } from '@nestjs/common';
 
+import { Event } from '@app/event/entities/event.entity';
 import { Providers } from '@app/providers/providers.interface';
-import { TicketmasterConfig } from './ticketmaster.config';
+import { TicketmasterHttpService } from './ticketmaster/ticketmaster_http.service';
+import { TicketmasterTransformer } from './ticketmaster.transformer';
 
 @Injectable()
 export class TicketmasterProvider extends Providers {
   constructor(
-    @Inject(TicketmasterConfig.KEY)
-    private readonly ticketmasterConfig: ConfigType<typeof TicketmasterConfig>,
+    private readonly ticketmasterHttpService: TicketmasterHttpService,
+    private readonly ticketmasterTransformer: TicketmasterTransformer,
   ) {
     super();
   }
 
-  async getData(): Promise<boolean> {
-    return true;
+  async getEvents(): Promise<Event[]> {
+    const events = await this.ticketmasterHttpService.eventSearch();
+
+    return events.data._embedded.events.map(event => this.ticketmasterTransformer.transformEvent(event));
   }
 }

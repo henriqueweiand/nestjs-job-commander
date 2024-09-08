@@ -1,21 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
 
 import { Event } from './entities/event.entity';
+import { EventRepository } from './event.repository';
 
 @Injectable()
 export class EventService {
     constructor(
-        @InjectRepository(Event)
-        private readonly eventRepository: Repository<Event>,
+        private readonly eventRepository: EventRepository
     ) { }
 
-    async create(): Promise<Event> {
-        const event = Object.assign(new Event(), {
-            name: `New Event ${new Date().toISOString()}`,
-        });
-
+    async create(event: Event): Promise<Event> {
         return this.eventRepository.save(event);
     }
 }
