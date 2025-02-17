@@ -9,11 +9,11 @@ import { TicketMasterEventRefreshModule } from './ticketmaster-event-refresh/tic
 const app = 'CLI-ENRICHER';
 
 @Module({
-    imports: [
-        EnvModule.register(app),
-        PersistenceModule.registerTypeOrm(app),
-        TicketMasterEventRefreshModule,
-    ],
-    providers: [CliCommand],
+  imports: [
+    EnvModule.register(app),
+    PersistenceModule.registerTypeOrm(app),
+    TicketMasterEventRefreshModule,
+  ],
+  providers: [CliCommand],
 })
-export class AppModule { }
+export class AppModule {}

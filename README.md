@@ -15,7 +15,7 @@ An example of how to run a job process with NestJS-Commander inside a k8s job.
 1. install packages
 2. run docker with `docker-compose up -d`
 3. create tables `yarn migration:run`
-4. run `nest start --watch -- cli event-refresh --provider=ticketmaster`
+4. run `nest start --watch -- cli ticketmaster-event-refresh`
 
 ### Running inside k8s
 
