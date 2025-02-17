@@ -32,7 +32,7 @@ NODE_ENV=production
 
 ### Application overview
 
-![Preview](https://github.com/henriqueweiand/nestjs-job-commander/blob/master/assets/overview.png)
+[![NestJS Job Commander Demo](https://img.youtube.com/vi/GCfBnEMHVEE/0.jpg)](https://www.youtube.com/watch?v=GCfBnEMHVEE)
 
 ### Possible updates
 
