@@ -1,5 +1,7 @@
 # NestJS-Job-Commander
 
+Blog post: https://medium.com/nestjs-ninja/implementing-kubernetes-jobs-with-nestjs-and-nest-commander-a-practical-guide-ex-67c38b610d4f
+
 An example of how to run a job process with NestJS-Commander inside a k8s job.
 
 **_ Technologies applied _**
